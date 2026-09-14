@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Happy Chicken — pollo crujiente, sabor casero y momentos felices.">
+  <title>Happy Chicken | Sabor que alegra el día</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>🍗 Pollo recién preparado, todos los días</span>
+      <a href="#pedido">Pide para recoger o llevar <span>→</span></a>
+    </div>
+  </div>
+
+  <header class="header" id="inicio">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Happy Chicken inicio">
+        <img src="logo.png" alt="Happy Chicken">
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#menu">Nuestro menú</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#promos">Promociones</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a class="nav-cta" href="#pedido">Hacer pedido <span>↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-pattern"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="dot"></span> Hecho para compartir</div>
+          <h1>El sabor que<br><em>te pone feliz.</em></h1>
+          <p class="hero-text">Pollo doradito, crujiente por fuera y jugoso por dentro. Recetas con sabor casero para disfrutar sin complicaciones.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu">Ver nuestro menú <span>→</span></a>
+            <a class="btn btn-ghost" href="#nosotros"><span class="play">▶</span> Conócenos</a>
+          </div>
+          <div class="hero-note">
+            <div class="avatars">
+              <span>H</span><span>C</span><span>F</span>
+            </div>
+            <div><strong>Un clásico para todos.</strong><small>Familias, amigos y mucho sabor.</small></div>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <div class="burst burst-one">¡ÑAM!</div>
+          <div class="burst burst-two">100%<small>sabor</small></div>
+          <div class="plate-shadow"></div>
+          <div class="chicken-card photo-card">
+            <img class="section-food-photo" src="imagenes/pollo-real.jpg" alt="Pollo Happy recién preparado">
+            <div class="card-label">ESPECIALIDAD<br><strong>DE LA CASA</strong></div>
+            <div class="card-bottom"><span>Pollo Happy</span><strong>S/ 24.90</strong></div>
+          </div>
+          <div class="hero-stamp">HAPPY<br><span>CHICKEN</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-info">
+      <div class="container quick-grid">
+        <div class="quick-item"><img class="quick-icon-img" src="imagenes/pollo-real.jpg" alt=""><div><strong>Pollo crujiente</strong><small>Preparado al momento</small></div></div>
+        <div class="quick-item"><img class="quick-icon-img" src="imagenes/ensalada-real.jpg" alt=""><div><strong>Acompañamientos</strong><small>Para completar tu combo</small></div></div>
+        <div class="quick-item"><img class="quick-icon-img" src="imagenes/combo-real.jpg" alt=""><div><strong>Para llevar</strong><small>Listo cuando tú quieras</small></div></div>
+        <div class="quick-item"><img class="quick-icon-img" src="imagenes/alitas-real.jpg" alt=""><div><strong>Hecho con cariño</strong><small>Sabor que se siente</small></div></div>
+      </div>
+    </section>
+
+    <section class="section menu-section" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow"><span class="dot"></span> Lo que más nos piden</div>
+            <h2>Hay un Happy para<br><em>cada antojo.</em></h2>
+          </div>
+          <p>Elige tu favorito, arma tu combo y disfruta. Ingredientes sencillos, porciones generosas y ese sabor que siempre provoca volver.</p>
+        </div>
+
+        <div class="filter-row" role="tablist" aria-label="Categorías del menú">
+          <button class="filter active" data-filter="todos">Todo</button>
+          <button class="filter" data-filter="pollo">Pollo</button>
+          <button class="filter" data-filter="combos">Combos</button>
+          <button class="filter" data-filter="acompanamientos">Acompañamientos</button>
+        </div>
+
+        <div class="menu-grid">
+          <article class="food-card" data-category="pollo">
+            <div class="food-img food-img-1"><span class="food-badge">Favorito</span><img class="food-photo" src="imagenes/pollo-real.jpg" alt="Pollo Happy"></div>
+            <div class="food-body"><div class="food-meta"><span>Pollo</span><b>★★★★★</b></div><h3>Pollo Happy</h3><p>Piezas doraditas con nuestra sazón de la casa.</p><div class="food-bottom"><strong>S/ 24.90</strong><button class="add-btn" data-name="Pollo Happy" data-price="24.90">+</button></div></div>
+          </article>
+
+          <article class="food-card" data-category="combos">
+            <div class="food-img food-img-2"><span class="food-badge">Para compartir</span><img class="food-photo" src="imagenes/combo-real.jpg" alt="Happy Combo"></div>
+            <div class="food-body"><div class="food-meta"><span>Combo</span><b>★★★★★</b></div><h3>Happy Combo</h3><p>Pollo, papas y bebida. Todo lo que necesitas.</p><div class="food-bottom"><strong>S/ 32.90</strong><button class="add-btn" data-name="Happy Combo" data-price="32.90">+</button></div></div>
+          </article>
+
+          <article class="food-card" data-category="combos">
+            <div class="food-img food-img-3"><span class="food-badge">Nuevo</span><img class="food-photo" src="imagenes/familiar-real.jpg" alt="Happy Familiar"></div>
+            <div class="food-body"><div class="food-meta"><span>Combo</span><b>★★★★★</b></div><h3>Happy Familiar</h3><p>La opción perfecta para una mesa llena de sonrisas.</p><div class="food-bottom"><strong>S/ 59.90</strong><button class="add-btn" data-name="Happy Familiar" data-price="59.90">+</button></div></div>
+          </article>
+
+          <article class="food-card" data-category="acompanamientos">
+            <div class="food-img food-img-4"><img class="food-photo" src="imagenes/papas-real.jpg" alt="Papas doraditas"></div>
+            <div class="food-body"><div class="food-meta"><span>Acompañamiento</span><b>★★★★★</b></div><h3>Papas doraditas</h3><p>Crocantes, calientitas y perfectas para compartir.</p><div class="food-bottom"><strong>S/ 9.90</strong><button class="add-btn" data-name="Papas doraditas" data-price="9.90">+</button></div></div>
+          </article>
+
+          <article class="food-card" data-category="pollo">
+            <div class="food-img food-img-5"><img class="food-photo" src="imagenes/alitas-real.jpg" alt="Alitas Happy"></div>
+            <div class="food-body"><div class="food-meta"><span>Pollo</span><b>★★★★★</b></div><h3>Alitas Happy</h3><p>Alitas doradas para los que siempre quieren una más.</p><div class="food-bottom"><strong>S/ 18.90</strong><button class="add-btn" data-name="Alitas Happy" data-price="18.90">+</button></div></div>
+          </article>
+
+          <article class="food-card" data-category="acompanamientos">
+            <div class="food-img food-img-6"><img class="food-photo" src="imagenes/ensalada-real.jpg" alt="Ensalada fresca"></div>
+            <div class="food-body"><div class="food-meta"><span>Acompañamiento</span><b>★★★★★</b></div><h3>Ensalada fresca</h3><p>Una opción ligera para equilibrar tu combo.</p><div class="food-bottom"><strong>S/ 8.90</strong><button class="add-btn" data-name="Ensalada fresca" data-price="8.90">+</button></div></div>
+          </article>
+        </div>
+
+        <div class="menu-footer"><span>¿Buscas algo más?</span><a href="#pedido">Consulta el menú completo →</a></div>
+      </div>
+    </section>
+
+    <section class="story-section" id="nosotros">
+      <div class="container story-grid">
+        <div class="story-visual">
+          <div class="story-photo">
+            <img class="story-food-photo" src="imagenes/combo-real.jpg" alt="Combo Happy Chicken">
+          </div>
+          <div class="since-card">
+            <strong>Desde el primer<br>mordisco.</strong>
+            <span>La receta es simple:<br>buen sabor + buenos momentos.</span>
+          </div>
+        </div>
+        <div class="story-copy">
+          <div class="eyebrow"><span class="dot"></span> Nuestra historia</div>
+          <h2>Comida rica.<br><em>Momentos felices.</em></h2>
+          <p>En Happy Chicken creemos que un buen plato tiene el poder de cambiar el día. Por eso cuidamos cada detalle: desde la sazón del pollo hasta ese acompañamiento que nadie quiere dejar.</p>
+          <p>Queremos ser ese lugar al que vienes cuando tienes hambre, cuando quieres celebrar o simplemente cuando te provoca algo realmente rico.</p>
+          <div class="values">
+            <div><span>01</span><strong>Sabor casero</strong><small>Recetas pensadas para disfrutar.</small></div>
+            <div><span>02</span><strong>Siempre fresco</strong><small>Preparado para ti.</small></div>
+            <div><span>03</span><strong>Buena onda</strong><small>Porque comer también es compartir.</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="promo-section" id="promos">
+      <div class="container">
+        <div class="promo-box">
+          <div class="promo-copy">
+            <div class="eyebrow light"><span class="dot"></span> Happy Promo</div>
+            <h2>Hoy toca<br><em>engreírse.</em></h2>
+            <p>Arma tu combo favorito y convierte cualquier día en un buen día.</p>
+            <a class="btn btn-light" href="#pedido">Quiero mi Happy <span>→</span></a>
+          </div>
+          <div class="promo-art">
+            <div class="promo-circle"></div>
+            <div class="promo-chicken"><img src="imagenes/pollo-real.jpg" alt="Pollo crujiente Happy Chicken"></div>
+            <div class="promo-price"><small>COMBOS DESDE</small><strong>S/ 24<sup>.90</sup></strong></div>
+            <div class="promo-star star1">★</div><div class="promo-star star2">★</div><div class="promo-star star3">★</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews-section">
+      <div class="container">
+        <div class="section-head compact">
+          <div><div class="eyebrow"><span class="dot"></span> Lo dicen ellos</div><h2>Cuando gusta,<br><em>se nota.</em></h2></div>
+          <div class="rating"><strong>4.9</strong><div>★★★★★<small>Clientes felices</small></div></div>
+        </div>
+        <div class="reviews-grid">
+          <article class="review"><div class="stars">★★★★★</div><p>“El pollo llegó calientito y súper crocante. Las papas también estaban buenísimas. Definitivamente volvemos.”</p><div class="reviewer"><span>MC</span><div><strong>María C.</strong><small>Cliente Happy</small></div></div></article>
+          <article class="review featured"><div class="quote">“</div><div class="stars">★★★★★</div><p>“Ese sabor de pollo que buscas cuando quieres darte un gusto. Las porciones son buenas y todo se siente recién hecho.”</p><div class="reviewer"><span>JR</span><div><strong>Jorge R.</strong><small>Cliente Happy</small></div></div></article>
+          <article class="review"><div class="stars">★★★★★</div><p>“Pedimos para compartir y todos quedaron felices. Buen sabor, buena atención y una presentación muy bonita.”</p><div class="reviewer"><span>AL</span><div><strong>Ana L.</strong><small>Cliente Happy</small></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="order-section" id="pedido">
+      <div class="container order-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Tu próximo antojo</div>
+          <h2>¿Listos para<br><em>un Happy?</em></h2>
+          <p>Haz tu pedido y disfruta donde quieras. También puedes escribirnos para consultar disponibilidad, horarios y promociones.</p>
+          <div class="contact-cards">
+            <a href="https://wa.me/51999999999" class="contact-card" target="_blank" rel="noopener"><span>◉</span><div><small>Pedidos por WhatsApp</small><strong>+51 999 999 999</strong></div><b>↗</b></a>
+            <div class="contact-card"><span>⌖</span><div><small>Visítanos</small><strong>Tu dirección aquí</strong></div><b>→</b></div>
+          </div>
+        </div>
+        <div class="order-card">
+          <div class="order-top"><span>Tu pedido</span><button class="clear-cart" type="button">Vaciar</button></div>
+          <div class="cart-items"><div class="empty-cart"><img class="empty-cart-img" src="imagenes/pollo-real.jpg" alt=""><strong>Aquí aparecerá tu pedido</strong><small>Agrega algo rico desde nuestro menú.</small></div></div>
+          <div class="order-total"><span>Total</span><strong>S/ <b>0.00</b></strong></div>
+          <button class="btn btn-primary order-button" type="button">Continuar pedido <span>→</span></button>
+          <small class="order-hint">Al continuar, te ayudaremos a preparar tu pedido.</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contacto">
+    <div class="container footer-main">
+      <div class="footer-brand"><img src="logo.png" alt="Happy Chicken"><p>Pollo rico, momentos felices.<br>Ese es nuestro secreto.</p></div>
+      <div class="footer-col"><strong>Happy Chicken</strong><a href="#menu">Menú</a><a href="#promos">Promociones</a><a href="#nosotros">Nosotros</a></div>
+      <div class="footer-col"><strong>Ayuda</strong><a href="#pedido">Pedidos</a><a href="#contacto">Contacto</a><a href="#pedido">Ubicación</a></div>
+      <div class="footer-col"><strong>Síguenos</strong><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Happy Chicken. Todos los derechos reservados.</span><span>Hecho para disfrutar.</span></div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite">¡Agregado a tu pedido! 🍗</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
