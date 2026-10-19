@@ -1,12 +1,15 @@
 # Guía de Carga y Backlog Operativo para Jira
+
 ## Proyecto: Happy Chicken Web Ordering & Landing Platform
+
 **Clave de Proyecto Sugerida (Project Key):** `HAP`  
 **Tipo de Proyecto:** Jira Software — Scrum (Team-managed o Company-managed)  
-**Lead:** Tech Lead / Senior Project Manager  
+**Lead:** Tech Lead / Senior Project Manager
 
 ---
 
 ## Índice
+
 1. [Configuración Inicial del Tablero y Flujo de Estados](#1-configuración-inicial-del-tablero-y-flujo-de-estados)
 2. [Definición de Sprints y Objetivos (Sprint Goals)](#2-definición-de-sprints-y-objetivos-sprint-goals)
 3. [Registro de Épicas (Epics)](#3-registro-de-épicas-epics)
@@ -18,26 +21,28 @@
 ## 1. Configuración Inicial del Tablero y Flujo de Estados
 
 ### 1.1 Configuración General
-* **Project Name:** Happy Chicken Web Platform
-* **Project Key:** `HAP`
-* **Issue Types requeridos:**
-  * 🟣 **Epic:** Agrupador de alto nivel de valor de negocio o arquitectura.
-  * 🟢 **Story:** Historia de usuario con valor directo para el cliente.
-  * 🔵 **Task:** Tarea técnica de ingeniería, DevOps o configuración.
-  * 🔴 **Bug:** Defecto o regresión identificada en el sistema.
-  * 🪟 **Sub-task:** Subdivisión de trabajo técnico dentro de una Story o Task.
+
+- **Project Name:** Happy Chicken Web Platform
+- **Project Key:** `HAP`
+- **Issue Types requeridos:**
+  - 🟣 **Epic:** Agrupador de alto nivel de valor de negocio o arquitectura.
+  - 🟢 **Story:** Historia de usuario con valor directo para el cliente.
+  - 🔵 **Task:** Tarea técnica de ingeniería, DevOps o configuración.
+  - 🔴 **Bug:** Defecto o regresión identificada en el sistema.
+  - 🪟 **Sub-task:** Subdivisión de trabajo técnico dentro de una Story o Task.
 
 ### 1.2 Columnas del Tablero (Board Columns) y Mapeo de Estados
+
 Configura el tablero Kanban/Scrum con las siguientes 6 columnas y límites de trabajo en progreso (WIP Limits):
 
-| Columna en Jira | Estado Asociado | WIP Limit | Criterio de Entrada / Salida |
-| :--- | :--- | :---: | :--- |
-| **Backlog** | `Backlog` | Sin límite | Tareas identificadas aún no priorizadas para el sprint activo. |
-| **Ready for Dev** | `Selected for Development` | Máx. 6 | Cumple al 100% la **Definition of Ready (DoR)**. |
-| **In Progress** | `In Progress` | **Máx. 2 por Dev** | Desarrollador asignado activamente programando. Rama Git creada. |
-| **Code Review** | `In Review` | Máx. 4 | Pull Request abierto en GitHub y Preview Deployment activo en Vercel. |
-| **QA & Testing** | `Under QA` | Máx. 3 | Checks de CI en verde y 1 aprobación técnica de par. Validación funcional. |
-| **Done** | `Done` / `Closed` | Sin límite | Cumple al 100% la **Definition of Done (DoD)** y está mergeado en `main`. |
+| Columna en Jira   | Estado Asociado            |     WIP Limit      | Criterio de Entrada / Salida                                               |
+| :---------------- | :------------------------- | :----------------: | :------------------------------------------------------------------------- |
+| **Backlog**       | `Backlog`                  |     Sin límite     | Tareas identificadas aún no priorizadas para el sprint activo.             |
+| **Ready for Dev** | `Selected for Development` |       Máx. 6       | Cumple al 100% la **Definition of Ready (DoR)**.                           |
+| **In Progress**   | `In Progress`              | **Máx. 2 por Dev** | Desarrollador asignado activamente programando. Rama Git creada.           |
+| **Code Review**   | `In Review`                |       Máx. 4       | Pull Request abierto en GitHub y Preview Deployment activo en Vercel.      |
+| **QA & Testing**  | `Under QA`                 |       Máx. 3       | Checks de CI en verde y 1 aprobación técnica de par. Validación funcional. |
+| **Done**          | `Done` / `Closed`          |     Sin límite     | Cumple al 100% la **Definition of Done (DoD)** y está mergeado en `main`.  |
 
 ---
 
@@ -46,20 +51,24 @@ Configura el tablero Kanban/Scrum con las siguientes 6 columnas y límites de tr
 Crea estos 4 Sprints en el backlog de Jira:
 
 ### 🟡 Sprint 0: Setup, Infraestructura y Gobernanza
-* **Duración:** 2 semanas
-* **Sprint Goal:** *"Establecer la infraestructura de CI/CD con GitHub Actions y Vercel, definir las políticas de ingeniería (DoD/DoR) y consolidar el Design System base en Figma para habilitar el desarrollo ágil sin bloqueos."*
+
+- **Duración:** 2 semanas
+- **Sprint Goal:** _"Establecer la infraestructura de CI/CD con GitHub Actions y Vercel, definir las políticas de ingeniería (DoD/DoR) y consolidar el Design System base en Figma para habilitar el desarrollo ágil sin bloqueos."_
 
 ### 🟢 Sprint 1: Catálogo Interactivo y Componentes Base
-* **Duración:** 2 semanas
-* **Sprint Goal:** *"Entregar la interfaz modular del catálogo gastronómico de Happy Chicken, permitiendo al usuario filtrar visualmente entre Pollo, Combos y Acompañamientos con microinteracciones fluidas y responsive."*
+
+- **Duración:** 2 semanas
+- **Sprint Goal:** _"Entregar la interfaz modular del catálogo gastronómico de Happy Chicken, permitiendo al usuario filtrar visualmente entre Pollo, Combos y Acompañamientos con microinteracciones fluidas y responsive."_
 
 ### 🔵 Sprint 2: Motor de Carrito y Checkout vía WhatsApp
-* **Duración:** 2 semanas
-* **Sprint Goal:** *"Completar el flujo transaccional en cliente: selección de productos, persistencia en LocalStorage y generación automática del mensaje estructurado hacia la API de WhatsApp para el cierre del pedido."*
+
+- **Duración:** 2 semanas
+- **Sprint Goal:** _"Completar el flujo transaccional en cliente: selección de productos, persistencia en LocalStorage y generación automática del mensaje estructurado hacia la API de WhatsApp para el cierre del pedido."_
 
 ### 🟣 Sprint 3: Calidad, Performance y Release a Producción
-* **Duración:** 2 semanas
-* **Sprint Goal:** *"Optimizar activos a WebP, auditar accesibilidad y rendimiento en Lighthouse superando los 90 puntos, ejecutar pruebas unitarias completas y desplegar la versión estable v1.0.0 en producción."*
+
+- **Duración:** 2 semanas
+- **Sprint Goal:** _"Optimizar activos a WebP, auditar accesibilidad y rendimiento en Lighthouse superando los 90 puntos, ejecutar pruebas unitarias completas y desplegar la versión estable v1.0.0 en producción."_
 
 ---
 
@@ -67,14 +76,14 @@ Crea estos 4 Sprints en el backlog de Jira:
 
 Crea primero estas 6 épicas en Jira para que luego puedas vincular cada ticket:
 
-| Epic Key Sugerida | Nombre de la Épica | Color Sugerido | Descripción |
-| :--- | :--- | :--- | :--- |
-| `HAP-EPIC-1` | **Gobernanza y Procesos SDLC** | Gris / Slate | Ciclo de vida del software, estándares de equipo, DoD, DoR y políticas de colaboración. |
-| `HAP-EPIC-2` | **DevOps & Pipeline CI/CD** | Azul Marino | Automatización con GitHub Actions, despliegues automáticos en Vercel y protección de ramas. |
-| `HAP-EPIC-3` | **Diseño UI/UX & Design System** | Violeta | Wireframes, prototipos interactivos en Figma y tokens de diseño (colores, fuentes, espacios). |
-| `HAP-EPIC-4` | **Frontend Core & Catálogo** | Naranja | Modularización de CSS/JS, componentes de tarjetas de platos y filtrado dinámico en tiempo real. |
-| `HAP-EPIC-5` | **Carrito & Checkout WhatsApp** | Verde Esmeralda | Lógica de carrito reactivo, persistencia en navegador y despacho de orden a WhatsApp API. |
-| `HAP-EPIC-6` | **Testing, Calidad & Release** | Rojo Crimson | Pruebas unitarias automatizadas, optimización Lighthouse y despliegue final v1.0.0. |
+| Epic Key Sugerida | Nombre de la Épica               | Color Sugerido  | Descripción                                                                                     |
+| :---------------- | :------------------------------- | :-------------- | :---------------------------------------------------------------------------------------------- |
+| `HAP-EPIC-1`      | **Gobernanza y Procesos SDLC**   | Gris / Slate    | Ciclo de vida del software, estándares de equipo, DoD, DoR y políticas de colaboración.         |
+| `HAP-EPIC-2`      | **DevOps & Pipeline CI/CD**      | Azul Marino     | Automatización con GitHub Actions, despliegues automáticos en Vercel y protección de ramas.     |
+| `HAP-EPIC-3`      | **Diseño UI/UX & Design System** | Violeta         | Wireframes, prototipos interactivos en Figma y tokens de diseño (colores, fuentes, espacios).   |
+| `HAP-EPIC-4`      | **Frontend Core & Catálogo**     | Naranja         | Modularización de CSS/JS, componentes de tarjetas de platos y filtrado dinámico en tiempo real. |
+| `HAP-EPIC-5`      | **Carrito & Checkout WhatsApp**  | Verde Esmeralda | Lógica de carrito reactivo, persistencia en navegador y despacho de orden a WhatsApp API.       |
+| `HAP-EPIC-6`      | **Testing, Calidad & Release**   | Rojo Crimson    | Pruebas unitarias automatizadas, optimización Lighthouse y despliegue final v1.0.0.             |
 
 ---
 
@@ -87,14 +96,16 @@ Copia y pega el contenido de cada bloque en la ventana **"Create Issue"** de Jir
 ### 📦 SPRINT 0 (Setup & Infraestructura)
 
 #### Ticket 1: HAP-101
-* **Issue Type:** `Task`
-* **Epic:** `Gobernanza y Procesos SDLC`
-* **Summary:** Documentación y oficialización de DoD, DoR y ciclo de vida SDLC
-* **Priority:** `High`
-* **Story Points:** `3`
-* **Labels:** `governance`, `documentation`, `agile`
-* **Rama Git Sugerida:** `docs/HAP-101-sdlc-dod-dor`
-* **Description:**
+
+- **Issue Type:** `Task`
+- **Epic:** `Gobernanza y Procesos SDLC`
+- **Summary:** Documentación y oficialización de DoD, DoR y ciclo de vida SDLC
+- **Priority:** `High`
+- **Story Points:** `3`
+- **Labels:** `governance`, `documentation`, `agile`
+- **Rama Git Sugerida:** `docs/HAP-101-sdlc-dod-dor`
+- **Description:**
+
 ```text
 h2. Objetivo
 Definir, documentar y oficializar los estándares de calidad del equipo para evitar deuda técnica y garantizar criterios de aceptación unificados antes de comenzar el desarrollo de funcionalidades.
@@ -116,14 +127,16 @@ h2. Subtareas Técnicas Sugeridas
 ---
 
 #### Ticket 2: HAP-102
-* **Issue Type:** `Task`
-* **Epic:** `DevOps & Pipeline CI/CD`
-* **Summary:** Configuración del Pipeline de Integración Continua con GitHub Actions
-* **Priority:** `Highest`
-* **Story Points:** `5`
-* **Labels:** `devops`, `ci`, `github-actions`
-* **Rama Git Sugerida:** `chore/HAP-102-ci-pipeline-setup`
-* **Description:**
+
+- **Issue Type:** `Task`
+- **Epic:** `DevOps & Pipeline CI/CD`
+- **Summary:** Configuración del Pipeline de Integración Continua con GitHub Actions
+- **Priority:** `Highest`
+- **Story Points:** `5`
+- **Labels:** `devops`, `ci`, `github-actions`
+- **Rama Git Sugerida:** `chore/HAP-102-ci-pipeline-setup`
+- **Description:**
+
 ```text
 h2. Objetivo
 Implementar un pipeline automatizado de CI que valide sintaxis, linters y pruebas unitarias en cada push y pull request hacia la rama main.
@@ -146,14 +159,16 @@ h2. Subtareas Técnicas Sugeridas
 ---
 
 #### Ticket 3: HAP-103
-* **Issue Type:** `Task`
-* **Epic:** `DevOps & Pipeline CI/CD`
-* **Summary:** Integración de Vercel con Preview Deployments y Producción en main
-* **Priority:** `Highest`
-* **Story Points:** `3`
-* **Labels:** `devops`, `cd`, `vercel`
-* **Rama Git Sugerida:** `chore/HAP-103-vercel-integration`
-* **Description:**
+
+- **Issue Type:** `Task`
+- **Epic:** `DevOps & Pipeline CI/CD`
+- **Summary:** Integración de Vercel con Preview Deployments y Producción en main
+- **Priority:** `Highest`
+- **Story Points:** `3`
+- **Labels:** `devops`, `cd`, `vercel`
+- **Rama Git Sugerida:** `chore/HAP-103-vercel-integration`
+- **Description:**
+
 ```text
 h2. Objetivo
 Vincular el repositorio de GitHub con Vercel para disponer de entornos de prueba efímeros por cada PR (Preview) y despliegue automático a producción tras el merge a main.
@@ -173,14 +188,16 @@ h2. Subtareas Técnicas Sugeridas
 ---
 
 #### Ticket 4: HAP-104
-* **Issue Type:** `Task`
-* **Epic:** `Gobernanza y Procesos SDLC`
-* **Summary:** Creación de Plantillas de Issue (Bugs / Features) y Pull Request en GitHub
-* **Priority:** `Medium`
-* **Story Points:** `2`
-* **Labels:** `templates`, `github`, `process`
-* **Rama Git Sugerida:** `docs/HAP-104-github-templates`
-* **Description:**
+
+- **Issue Type:** `Task`
+- **Epic:** `Gobernanza y Procesos SDLC`
+- **Summary:** Creación de Plantillas de Issue (Bugs / Features) y Pull Request en GitHub
+- **Priority:** `Medium`
+- **Story Points:** `2`
+- **Labels:** `templates`, `github`, `process`
+- **Rama Git Sugerida:** `docs/HAP-104-github-templates`
+- **Description:**
+
 ```text
 h2. Objetivo
 Estandarizar la comunicación de incidentes, solicitudes de cambio y revisiones de código en GitHub mediante plantillas estructuradas.
@@ -202,14 +219,16 @@ h2. Subtareas Técnicas Sugeridas
 ---
 
 #### Ticket 5: HAP-105
-* **Issue Type:** `Task`
-* **Epic:** `Gobernanza y Procesos SDLC`
-* **Summary:** Configuración de canales de Discord y Webhooks de Notificación GitHub
-* **Priority:** `Low`
-* **Story Points:** `2`
-* **Labels:** `collaboration`, `discord`, `webhooks`
-* **Rama Git Sugerida:** `chore/HAP-105-discord-webhooks`
-* **Description:**
+
+- **Issue Type:** `Task`
+- **Epic:** `Gobernanza y Procesos SDLC`
+- **Summary:** Configuración de canales de Discord y Webhooks de Notificación GitHub
+- **Priority:** `Low`
+- **Story Points:** `2`
+- **Labels:** `collaboration`, `discord`, `webhooks`
+- **Rama Git Sugerida:** `chore/HAP-105-discord-webhooks`
+- **Description:**
+
 ```text
 h2. Objetivo
 Configurar el servidor de Discord del equipo con canales temáticos y webhooks automatizados para monitorear la actividad del repositorio en tiempo real.
@@ -224,14 +243,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ---
 
 #### Ticket 6: HAP-106
-* **Issue Type:** `Task`
-* **Epic:** `Gobernanza y Procesos SDLC`
-* **Summary:** Configuración del Tablero Scrum en Jira y Smart Commits con GitHub
-* **Priority:** `High`
-* **Story Points:** `3`
-* **Labels:** `jira`, `project-management`, `traceability`
-* **Rama Git Sugerida:** `chore/HAP-106-jira-smart-commits`
-* **Description:**
+
+- **Issue Type:** `Task`
+- **Epic:** `Gobernanza y Procesos SDLC`
+- **Summary:** Configuración del Tablero Scrum en Jira y Smart Commits con GitHub
+- **Priority:** `High`
+- **Story Points:** `3`
+- **Labels:** `jira`, `project-management`, `traceability`
+- **Rama Git Sugerida:** `chore/HAP-106-jira-smart-commits`
+- **Description:**
+
 ```text
 h2. Objetivo
 Configurar el flujo de estados de Jira y la integración GitHub for Jira para sincronizar automáticamente el avance de tareas con los commits y PRs.
@@ -245,14 +266,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ---
 
 #### Ticket 7: HAP-107
-* **Issue Type:** `Story`
-* **Epic:** `Diseño UI/UX & Design System`
-* **Summary:** Creación del Design System y Librería de Tokens en Figma
-* **Priority:** `High`
-* **Story Points:** `5`
-* **Labels:** `design-system`, `figma`, `ui-tokens`
-* **Rama Git Sugerida:** N/A (Entregable en Figma)
-* **Description:**
+
+- **Issue Type:** `Story`
+- **Epic:** `Diseño UI/UX & Design System`
+- **Summary:** Creación del Design System y Librería de Tokens en Figma
+- **Priority:** `High`
+- **Story Points:** `5`
+- **Labels:** `design-system`, `figma`, `ui-tokens`
+- **Rama Git Sugerida:** N/A (Entregable en Figma)
+- **Description:**
+
 ```text
 h2. Historia de Usuario
 Como diseñador de producto y desarrollador frontend
@@ -276,14 +299,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ### 🍔 SPRINT 1 (Core & Catálogo)
 
 #### Ticket 8: HAP-108
-* **Issue Type:** `Story`
-* **Epic:** `Diseño UI/UX & Design System`
-* **Summary:** Prototipado interactivo de alta fidelidad para Menú y Carrito en Figma
-* **Priority:** `Medium`
-* **Story Points:** `5`
-* **Labels:** `figma`, `prototyping`, `ux-research`
-* **Rama Git Sugerida:** N/A (Entregable en Figma)
-* **Description:**
+
+- **Issue Type:** `Story`
+- **Epic:** `Diseño UI/UX & Design System`
+- **Summary:** Prototipado interactivo de alta fidelidad para Menú y Carrito en Figma
+- **Priority:** `Medium`
+- **Story Points:** `5`
+- **Labels:** `figma`, `prototyping`, `ux-research`
+- **Rama Git Sugerida:** N/A (Entregable en Figma)
+- **Description:**
+
 ```text
 h2. Historia de Usuario
 Como cliente potencial de Happy Chicken
@@ -299,14 +324,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ---
 
 #### Ticket 9: HAP-109
-* **Issue Type:** `Task`
-* **Epic:** `Frontend Core & Catálogo`
-* **Summary:** Modularización de arquitectura CSS con Custom Properties y Metodología BEM
-* **Priority:** `Highest`
-* **Story Points:** `5`
-* **Labels:** `css`, `refactor`, `architecture`
-* **Rama Git Sugerida:** `feature/HAP-109-css-modularization`
-* **Description:**
+
+- **Issue Type:** `Task`
+- **Epic:** `Frontend Core & Catálogo`
+- **Summary:** Modularización de arquitectura CSS con Custom Properties y Metodología BEM
+- **Priority:** `Highest`
+- **Story Points:** `5`
+- **Labels:** `css`, `refactor`, `architecture`
+- **Rama Git Sugerida:** `feature/HAP-109-css-modularization`
+- **Description:**
+
 ```text
 h2. Objetivo
 Refactorizar el archivo styles.css monolítico en una estructura desacoplada y escalable bajo metodología BEM y variables en :root.
@@ -324,14 +351,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ---
 
 #### Ticket 10: HAP-110
-* **Issue Type:** `Story`
-* **Epic:** `Frontend Core & Catálogo`
-* **Summary:** Filtrado dinámico por categorías en el menú sin recargas de página
-* **Priority:** `Highest`
-* **Story Points:** `5`
-* **Labels:** `javascript`, `dom`, `catalog`
-* **Rama Git Sugerida:** `feature/HAP-110-menu-category-filter`
-* **Description:**
+
+- **Issue Type:** `Story`
+- **Epic:** `Frontend Core & Catálogo`
+- **Summary:** Filtrado dinámico por categorías en el menú sin recargas de página
+- **Priority:** `Highest`
+- **Story Points:** `5`
+- **Labels:** `javascript`, `dom`, `catalog`
+- **Rama Git Sugerida:** `feature/HAP-110-menu-category-filter`
+- **Description:**
+
 ```text
 h2. Historia de Usuario
 Como cliente con un antojo específico
@@ -348,14 +377,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ---
 
 #### Ticket 11: HAP-111
-* **Issue Type:** `Story`
-* **Epic:** `Frontend Core & Catálogo`
-* **Summary:** Componente de tarjeta de producto accesible con badges promocionales
-* **Priority:** `Medium`
-* **Story Points:** `3`
-* **Labels:** `a11y`, `components`, `ui`
-* **Rama Git Sugerida:** `feature/HAP-111-accessible-food-cards`
-* **Description:**
+
+- **Issue Type:** `Story`
+- **Epic:** `Frontend Core & Catálogo`
+- **Summary:** Componente de tarjeta de producto accesible con badges promocionales
+- **Priority:** `Medium`
+- **Story Points:** `3`
+- **Labels:** `a11y`, `components`, `ui`
+- **Rama Git Sugerida:** `feature/HAP-111-accessible-food-cards`
+- **Description:**
+
 ```text
 h2. Historia de Usuario
 Como usuario de lectores de pantalla o comprador digital
@@ -373,14 +404,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ### 🍗 SPRINT 2 (Carrito & WhatsApp Checkout)
 
 #### Ticket 12: HAP-112
-* **Issue Type:** `Story`
-* **Epic:** `Carrito & Checkout WhatsApp`
-* **Summary:** Carrito de compras reactivo con persistencia en LocalStorage
-* **Priority:** `Highest`
-* **Story Points:** `8`
-* **Labels:** `cart`, `state-management`, `localstorage`
-* **Rama Git Sugerida:** `feature/HAP-112-reactive-cart-localstorage`
-* **Description:**
+
+- **Issue Type:** `Story`
+- **Epic:** `Carrito & Checkout WhatsApp`
+- **Summary:** Carrito de compras reactivo con persistencia en LocalStorage
+- **Priority:** `Highest`
+- **Story Points:** `8`
+- **Labels:** `cart`, `state-management`, `localstorage`
+- **Rama Git Sugerida:** `feature/HAP-112-reactive-cart-localstorage`
+- **Description:**
+
 ```text
 h2. Historia de Usuario
 Como usuario que arma su pedido
@@ -397,14 +430,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ---
 
 #### Ticket 13: HAP-113
-* **Issue Type:** `Story`
-* **Epic:** `Carrito & Checkout WhatsApp`
-* **Summary:** Generación y despacho automático de pedido formateado hacia WhatsApp API
-* **Priority:** `Highest`
-* **Story Points:** `5`
-* **Labels:** `checkout`, `whatsapp-api`, `integration`
-* **Rama Git Sugerida:** `feature/HAP-113-whatsapp-checkout-payload`
-* **Description:**
+
+- **Issue Type:** `Story`
+- **Epic:** `Carrito & Checkout WhatsApp`
+- **Summary:** Generación y despacho automático de pedido formateado hacia WhatsApp API
+- **Priority:** `Highest`
+- **Story Points:** `5`
+- **Labels:** `checkout`, `whatsapp-api`, `integration`
+- **Rama Git Sugerida:** `feature/HAP-113-whatsapp-checkout-payload`
+- **Description:**
+
 ```text
 h2. Historia de Usuario
 Como cliente listo para pagar su pedido
@@ -424,14 +459,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ---
 
 #### Ticket 14: HAP-114
-* **Issue Type:** `Story`
-* **Epic:** `Carrito & Checkout WhatsApp`
-* **Summary:** Feedback de usuario con Toasts no intrusivos y estados vacíos del carrito
-* **Priority:** `Medium`
-* **Story Points:** `3`
-* **Labels:** `microinteractions`, `toast`, `ux`
-* **Rama Git Sugerida:** `feature/HAP-114-cart-toast-empty-states`
-* **Description:**
+
+- **Issue Type:** `Story`
+- **Epic:** `Carrito & Checkout WhatsApp`
+- **Summary:** Feedback de usuario con Toasts no intrusivos y estados vacíos del carrito
+- **Priority:** `Medium`
+- **Story Points:** `3`
+- **Labels:** `microinteractions`, `toast`, `ux`
+- **Rama Git Sugerida:** `feature/HAP-114-cart-toast-empty-states`
+- **Description:**
+
 ```text
 h2. Historia de Usuario
 Como usuario interactuando con el sistema
@@ -449,14 +486,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ### 🚀 SPRINT 3 (Calidad, Performance & Release)
 
 #### Ticket 15: HAP-115
-* **Issue Type:** `Task`
-* **Epic:** `Testing, Calidad & Release`
-* **Summary:** Suite de pruebas unitarias para lógica de carrito y payload de WhatsApp
-* **Priority:** `Highest`
-* **Story Points:** `5`
-* **Labels:** `testing`, `unit-tests`, `quality`
-* **Rama Git Sugerida:** `test/HAP-115-unit-testing-cart`
-* **Description:**
+
+- **Issue Type:** `Task`
+- **Epic:** `Testing, Calidad & Release`
+- **Summary:** Suite de pruebas unitarias para lógica de carrito y payload de WhatsApp
+- **Priority:** `Highest`
+- **Story Points:** `5`
+- **Labels:** `testing`, `unit-tests`, `quality`
+- **Rama Git Sugerida:** `test/HAP-115-unit-testing-cart`
+- **Description:**
+
 ```text
 h2. Objetivo
 Crear una batería de pruebas unitarias automatizadas para blindar la lógica de negocio del carrito contra regresiones.
@@ -474,14 +513,16 @@ h2. Criterios de Aceptación (Given / When / Then)
 ---
 
 #### Ticket 16: HAP-116
-* **Issue Type:** `Task`
-* **Epic:** `Testing, Calidad & Release`
-* **Summary:** Optimización de activos WebP, auditoría Lighthouse 90+ y Release v1.0.0
-* **Priority:** `Highest`
-* **Story Points:** `5`
-* **Labels:** `performance`, `lighthouse`, `release`
-* **Rama Git Sugerida:** `chore/HAP-116-performance-release-v1`
-* **Description:**
+
+- **Issue Type:** `Task`
+- **Epic:** `Testing, Calidad & Release`
+- **Summary:** Optimización de activos WebP, auditoría Lighthouse 90+ y Release v1.0.0
+- **Priority:** `Highest`
+- **Story Points:** `5`
+- **Labels:** `performance`, `lighthouse`, `release`
+- **Rama Git Sugerida:** `chore/HAP-116-performance-release-v1`
+- **Description:**
+
 ```text
 h2. Objetivo
 Optimizar la carga de la plataforma en producción para cumplir con los estándares de Core Web Vitals de Google y publicar la versión final del proyecto.
