@@ -1,0 +1,25 @@
+{
+  "name": "happy-chicken-landing",
+  "version": "1.0.0",
+  "description": "Happy Chicken — Fast-food landing page and web ordering platform",
+  "main": "script.js",
+  "scripts": {
+    "lint": "npm run lint:format && npm run lint:html",
+    "lint:format": "prettier --check \"**/*.{html,css,js,json,md}\"",
+    "lint:html": "htmlhint \"**/*.html\"",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "test": "echo \"[TEST] Tests suite initialized successfully for Sprint 0/1.\" && exit 0"
+  },
+  "keywords": [
+    "happy-chicken",
+    "ordering-app",
+    "landing-page",
+    "utp"
+  ],
+  "author": "Happy Chicken Team",
+  "license": "MIT",
+  "devDependencies": {
+    "htmlhint": "^1.1.4",
+    "prettier": "^3.3.3"
+  }
+}
