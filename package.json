@@ -2,13 +2,15 @@
   "name": "happy-chicken-landing",
   "version": "1.0.0",
   "description": "Happy Chicken — Fast-food landing page and web ordering platform",
-  "main": "script.js",
+  "main": "src/js/main.js",
   "scripts": {
-    "lint": "npm run lint:format && npm run lint:html",
+    "lint": "npm run lint:format && npm run lint:html && npm run lint:js",
     "lint:format": "prettier --check \"**/*.{html,css,js,json,md}\"",
     "lint:html": "htmlhint \"**/*.html\"",
+    "lint:js": "eslint .",
     "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
-    "test": "echo \"[TEST] Tests suite initialized successfully for Sprint 0/1.\" && exit 0"
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage"
   },
   "keywords": [
     "happy-chicken",
@@ -19,7 +21,11 @@
   "author": "Happy Chicken Team",
   "license": "MIT",
   "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "globals": "^17.14.0",
     "htmlhint": "^1.1.4",
     "prettier": "^3.3.3"
-  }
+  },
+  "type": "module"
 }
