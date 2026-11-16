@@ -2,9 +2,13 @@ name: CI Happy Chicken Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -18,14 +22,14 @@ jobs:
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 22
+          cache: "npm"
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install Dependencies (deterministic)
+        run: npm ci
 
-      - name: Run Linters & Formatting Check
+      - name: Lint (Prettier + HTMLHint + ESLint)
         run: npm run lint
 
-      - name: Run Automated Tests
-        run: npm test
+      - name: Run Unit Tests with Coverage
+        run: npm run test:coverage
