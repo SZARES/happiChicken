@@ -10,7 +10,10 @@
     "lint:js": "eslint .",
     "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
     "test": "node --test",
-    "test:coverage": "node --test --experimental-test-coverage"
+    "test:coverage": "node --test --experimental-test-coverage",
+    "docker:build": "docker build -t happy-chicken:local .",
+    "docker:run": "docker run --rm -d --name happy-chicken -p 8080:80 happy-chicken:local",
+    "docker:stop": "docker stop happy-chicken"
   },
   "keywords": [
     "happy-chicken",
