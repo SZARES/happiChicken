@@ -33,3 +33,53 @@ jobs:
 
       - name: Run Unit Tests with Coverage
         run: npm run test:coverage
+
+  docker:
+    name: Docker Build & Smoke Test
+    runs-on: ubuntu-latest
+    needs: validate
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image (multi-stage)
+        run: docker build -t happy-chicken:${{ github.sha }} .
+
+      - name: Show Image Size and Layers
+        run: |
+          docker image ls happy-chicken
+          docker history happy-chicken:${{ github.sha }}
+
+      - name: Run Container
+        run: docker run -d --name happy-chicken -p 8080:80 happy-chicken:${{ github.sha }}
+
+      - name: Smoke Test (HTTP, headers, nginx config)
+        run: |
+          for i in $(seq 1 15); do curl -fs http://localhost:8080/ > /dev/null && break; sleep 1; done
+          curl -fsS http://localhost:8080/ | grep -q "Happy Chicken"
+          curl -sSI http://localhost:8080/ | tee headers.txt
+          grep -qi "x-frame-options: DENY" headers.txt
+          grep -qi "x-content-type-options: nosniff" headers.txt
+          curl -fsSI http://localhost:8080/src/js/main.js | grep -i "content-type"
+          curl -fsSI http://localhost:8080/imagenes/pollo-real.jpg | grep -i "cache-control"
+          docker exec happy-chicken nginx -t
+          docker ps --filter name=happy-chicken
+
+      - name: Container Logs
+        if: always()
+        run: docker logs happy-chicken
+
+      - name: Publish Image to GitHub Container Registry
+        continue-on-error: true
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          IMAGE=ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker tag happy-chicken:${{ github.sha }} $IMAGE:latest
+          docker tag happy-chicken:${{ github.sha }} $IMAGE:${{ github.sha }}
+          docker push $IMAGE:latest
+          docker push $IMAGE:${{ github.sha }}
