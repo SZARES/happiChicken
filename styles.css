@@ -1899,3 +1899,187 @@ body:has(.cart-fab:not([hidden])) .toast {
   font-size: 14px;
   padding: 10px 18px;
 }
+
+/* ==========================================================
+   Comanda (HAP-119)
+   El pedido se ve como el ticket de cocina de una pollería,
+   sobre papel kraft de bolsa para llevar. Es el único
+   elemento llamativo de la página; el resto se mantiene sobrio.
+   ========================================================== */
+:root {
+  --kraft: #e9d8bc;
+  --ticket: #fffdf8;
+  --ticket-rule: #d8c6a8;
+}
+
+/* Titulares en un solo color; el naranja queda para acciones y precios */
+h1 em,
+h2 em {
+  color: inherit;
+}
+.btn {
+  font-size: 15px;
+  font-weight: 800;
+  gap: 10px;
+  padding: 15px 24px;
+}
+.nav-cta {
+  font-size: 14px;
+}
+.contact-card strong {
+  font-size: 15px;
+}
+
+.order-section {
+  background: var(--kraft);
+}
+.order-grid > div:first-child > p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #5e4a37;
+}
+.order-card {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 18px 24px rgba(80, 45, 15, 0.22));
+  rotate: 1.2deg;
+}
+.ticket {
+  --zig: 9px;
+  background: var(--ticket);
+  padding: calc(var(--zig) + 24px) 26px calc(var(--zig) + 22px);
+  mask:
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top /
+      calc(2 * var(--zig)) 51% repeat-x,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom /
+      calc(2 * var(--zig)) 51% repeat-x;
+}
+.ticket-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 2px dashed var(--ticket-rule);
+}
+.ticket-head strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.ticket-place,
+.ticket-date {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.clear-cart {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brown-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 4px 0;
+}
+.cart-items {
+  min-height: 150px;
+  padding: 8px 0;
+}
+.cart-line {
+  display: block;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--ticket-rule);
+}
+.cart-line:last-child {
+  border-bottom: 0;
+}
+.cart-line__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cart-line__row + .cart-line__row {
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.cart-line__row strong {
+  font-size: 15px;
+}
+.cart-line__leader {
+  flex: 1;
+  align-self: flex-end;
+  margin-bottom: 5px;
+  border-bottom: 2px dotted var(--ticket-rule);
+}
+.cart-line__price {
+  font-variant-numeric: tabular-nums;
+}
+.cart-line small {
+  font-size: 13px;
+}
+.empty-cart {
+  padding: 34px 10px;
+  text-align: center;
+}
+.empty-cart strong {
+  font-size: 16px;
+}
+.empty-cart small {
+  font-size: 14px;
+  margin-top: 4px;
+}
+.empty-cart a {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--brown-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.order-total {
+  align-items: baseline;
+  border-top: 2px dashed var(--ticket-rule);
+  padding: 18px 0 20px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.order-total strong {
+  font-size: 38px;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.order-button {
+  padding: 17px 20px;
+}
+.order-hint {
+  font-size: 13px;
+  line-height: 1.4;
+  margin-top: 12px;
+}
+.clear-cart:focus-visible,
+.empty-cart a:focus-visible,
+.remove-line:focus-visible,
+.add-line:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+@media (max-width: 900px) {
+  .order-card {
+    rotate: none;
+  }
+}
+
+.reviewer strong,
+.rating small {
+  font-size: 14px;
+}
+.reviewer small {
+  font-size: 13px;
+}

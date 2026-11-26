@@ -138,9 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!cart.length) {
       cartContainer.innerHTML = `
         <div class="empty-cart">
-          <img class="empty-cart-img" src="imagenes/pollo-real.webp" alt="" />
-          <strong>Aquí aparecerá tu pedido</strong>
-          <small>Agrega algo rico desde nuestro menú.</small>
+          <strong>Tu pedido está vacío</strong>
+          <small>Elige algo del menú y aparecerá aquí.</small>
+          <a href="#menu">Ver el menú</a>
         </div>`;
       totalElement.textContent = "0.00";
       return;
@@ -151,12 +151,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const name = escapeHtml(item.name);
         return `
       <div class="cart-line">
-        <div><strong>${name}</strong><small>${item.qty} × S/ ${formatSoles(item.priceCents)}</small></div>
-        <strong>S/ ${formatSoles(item.priceCents * item.qty)}</strong>
-        <div class="line-qty">
-          <button class="remove-line" type="button" data-name="${name}" aria-label="Quitar uno de ${name}">−</button>
-          <span>${item.qty}</span>
-          <button class="add-line" type="button" data-name="${name}" aria-label="Agregar uno más de ${name}">+</button>
+        <div class="cart-line__row">
+          <strong>${name}</strong>
+          <span class="cart-line__leader" aria-hidden="true"></span>
+          <strong class="cart-line__price">S/ ${formatSoles(item.priceCents * item.qty)}</strong>
+        </div>
+        <div class="cart-line__row">
+          <small>S/ ${formatSoles(item.priceCents)} c/u</small>
+          <div class="line-qty">
+            <button class="remove-line" type="button" data-name="${name}" aria-label="Quitar uno de ${name}">−</button>
+            <span>${item.qty}</span>
+            <button class="add-line" type="button" data-name="${name}" aria-label="Agregar uno más de ${name}">+</button>
+          </div>
         </div>
       </div>`;
       })
@@ -200,6 +206,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     window.open(buildWhatsAppUrl(WHATSAPP_PHONE, cart), "_blank", "noopener");
   });
+
+  /* ---------- Comanda: fecha y hora impresas en el ticket ---------- */
+  const ticketDate = document.querySelector(".ticket-date");
+  if (ticketDate) {
+    const now = new Intl.DateTimeFormat("es-PE", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(new Date());
+    ticketDate.textContent = now;
+  }
 
   /* ---------- Footer ---------- */
   const year = document.querySelector(".footer-bottom span");
