@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -176,8 +176,7 @@
           <div class="menu-grid">
             <article class="food-card" data-category="pollo">
               <div class="food-img food-img-1">
-                <span class="food-badge">Favorito</span
-                ><img
+                <img
                   class="food-photo"
                   src="imagenes/pollo-real.webp"
                   alt="Pollo Happy"
@@ -200,8 +199,7 @@
 
             <article class="food-card" data-category="combos">
               <div class="food-img food-img-2">
-                <span class="food-badge">Para compartir</span
-                ><img
+                <img
                   class="food-photo"
                   src="imagenes/combo-real.webp"
                   alt="Happy Combo"
@@ -224,8 +222,7 @@
 
             <article class="food-card" data-category="combos">
               <div class="food-img food-img-3">
-                <span class="food-badge">Nuevo</span
-                ><img
+                <img
                   class="food-photo"
                   src="imagenes/familiar-real.webp"
                   alt="Happy Familiar"
@@ -317,7 +314,7 @@
           </div>
 
           <div class="menu-footer">
-            <span>¿Buscas algo más?</span><a href="#pedido">Consulta el menú completo →</a>
+            <span>¿Ya elegiste?</span><a href="#pedido">Revisa tu pedido →</a>
           </div>
         </div>
       </section>
@@ -464,19 +461,25 @@
             </p>
             <div class="contact-cards">
               <a
-                href="https://wa.me/51999999999"
+                href="https://wa.me/51946422118"
                 class="contact-card"
                 target="_blank"
                 rel="noopener"
                 ><span>◉</span>
-                <div><small>Pedidos por WhatsApp</small><strong>+51 999 999 999</strong></div>
+                <div><small>Pedidos por WhatsApp</small><strong>+51 946 422 118</strong></div>
                 <b>↗</b></a
               >
-              <div class="contact-card">
-                <span>⌖</span>
-                <div><small>Visítanos</small><strong>Tu dirección aquí</strong></div>
-                <b>→</b>
-              </div>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Urb.%20Ignacio%20Merino%20Etapa%206%2C%20Piura"
+                class="contact-card"
+                target="_blank"
+                rel="noopener"
+                ><span>⌖</span>
+                <div>
+                  <small>Visítanos</small><strong>Etapa 6, Urb. Ignacio Merino, Piura</strong>
+                </div>
+                <b>↗</b></a
+              >
             </div>
           </div>
           <div class="order-card">
@@ -541,6 +544,11 @@
       </div>
     </footer>
 
+    <a class="cart-fab" href="#pedido" hidden>
+      <span class="cart-fab__count">0</span>
+      <span class="cart-fab__label">Ver mi pedido</span>
+      <strong class="cart-fab__total">S/ 0.00</strong>
+    </a>
     <div class="toast" role="status" aria-live="polite">¡Agregado a tu pedido! 🍗</div>
 
     <script type="module" src="src/js/main.js"></script>

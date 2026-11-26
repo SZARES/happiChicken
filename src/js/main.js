@@ -1,6 +1,12 @@
 import { WHATSAPP_PHONE } from "./config.js";
 import { ALL_CATEGORIES, matchesCategory } from "./modules/catalog.js";
-import { addItem, decrementItem, formatSoles, getTotalCents } from "./modules/cart.js";
+import {
+  addItem,
+  decrementItem,
+  formatSoles,
+  getItemCount,
+  getTotalCents,
+} from "./modules/cart.js";
 import { buildWhatsAppUrl } from "./modules/whatsapp.js";
 import { loadCart, saveCart } from "./state/store.js";
 import { escapeHtml } from "./utils/escape-html.js";
@@ -64,6 +70,36 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------- Carrito (HAP-112) ---------- */
   const cartContainer = document.querySelector(".cart-items");
   const totalElement = document.querySelector(".order-total strong b");
+  const cartFab = document.querySelector(".cart-fab");
+  const fabCount = cartFab?.querySelector(".cart-fab__count");
+  const fabTotal = cartFab?.querySelector(".cart-fab__total");
+
+  // Botón flotante (HAP-119): muestra cantidad y total mientras el cliente
+  // recorre el menú; se esconde cuando la sección del pedido ya está a la vista.
+  function renderCartFab() {
+    if (!cartFab) return;
+    const count = getItemCount(cart);
+    cartFab.hidden = count === 0;
+    if (!count) return;
+    if (fabCount.textContent !== String(count)) {
+      fabCount.textContent = String(count);
+      fabCount.classList.remove("bump");
+      void fabCount.offsetWidth;
+      fabCount.classList.add("bump");
+    }
+    fabTotal.textContent = `S/ ${formatSoles(getTotalCents(cart))}`;
+    cartFab.setAttribute(
+      "aria-label",
+      `Ver mi pedido: ${count} ${count === 1 ? "producto" : "productos"}, S/ ${formatSoles(getTotalCents(cart))}`
+    );
+  }
+
+  const orderSection = document.querySelector("#pedido");
+  if (cartFab && orderSection && "IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      cartFab.classList.toggle("is-away", entry.isIntersecting);
+    }).observe(orderSection);
+  }
 
   function updateCart(nextCart) {
     cart = nextCart;
@@ -72,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderCart() {
+    renderCartFab();
     if (!cartContainer || !totalElement) return;
 
     if (!cart.length) {
