@@ -65,7 +65,7 @@ jobs:
           grep -qi "x-frame-options: DENY" headers.txt
           grep -qi "x-content-type-options: nosniff" headers.txt
           curl -fsSI http://localhost:8080/src/js/main.js | grep -i "content-type"
-          curl -fsSI http://localhost:8080/imagenes/pollo-real.jpg | grep -i "cache-control"
+          curl -fsSI http://localhost:8080/imagenes/pollo-real.webp | grep -i "cache-control"
           docker exec happy-chicken nginx -t
           docker ps --filter name=happy-chicken
 

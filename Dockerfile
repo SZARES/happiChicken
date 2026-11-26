@@ -17,7 +17,7 @@ LABEL org.opencontainers.image.title="Happy Chicken" \
       org.opencontainers.image.source="https://github.com/SZARES/happiChicken"
 
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=test /app/index.html /app/styles.css /app/logo.png /usr/share/nginx/html/
+COPY --from=test /app/index.html /app/styles.css /app/logo.png /app/logo.webp /app/favicon.png /usr/share/nginx/html/
 COPY --from=test /app/imagenes/ /usr/share/nginx/html/imagenes/
 COPY --from=test /app/src/ /usr/share/nginx/html/src/
 

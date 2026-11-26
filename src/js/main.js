@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!cart.length) {
       cartContainer.innerHTML = `
         <div class="empty-cart">
-          <img class="empty-cart-img" src="imagenes/pollo-real.jpg" alt="" />
+          <img class="empty-cart-img" src="imagenes/pollo-real.webp" alt="" />
           <strong>Aquí aparecerá tu pedido</strong>
           <small>Agrega algo rico desde nuestro menú.</small>
         </div>`;
