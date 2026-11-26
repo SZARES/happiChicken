@@ -1647,3 +1647,255 @@ h2 {
 body:has(.cart-fab:not([hidden])) .toast {
   bottom: 84px;
 }
+
+/* ==========================================================
+   Pulido visual (HAP-119)
+   Legibilidad, tarjetas del menú y entrada del hero.
+   ========================================================== */
+
+/* Textos legibles: nada de cuerpo por debajo de 13 px */
+.eyebrow {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.eyebrow .dot {
+  display: none;
+}
+.hero-note small,
+.quick-item small,
+.food-body p,
+.contact-card small,
+.menu-footer {
+  font-size: 13px;
+}
+.quick-item strong,
+.hero-note strong {
+  font-size: 14px;
+}
+.food-body p {
+  min-height: 0;
+  line-height: 1.45;
+}
+.food-meta {
+  font-size: 12px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 700;
+  color: var(--brown);
+}
+.food-bottom strong {
+  font-size: 21px;
+}
+
+/* Valores de la historia: no son pasos, así que sin numeración */
+.values > div {
+  border-top: 3px solid var(--orange);
+  padding-top: 14px;
+}
+.values strong {
+  font-size: 16px;
+  margin: 0 0 4px;
+}
+.values small {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Tarjetas del menú: sin salto en hover, solo el zoom de la foto */
+.food-card:hover {
+  transform: none;
+}
+
+/* Botón "Agregar" con la cantidad que ya va en el pedido */
+.add-btn {
+  width: auto;
+  height: 40px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 800;
+}
+.add-btn__label::before {
+  content: "+ ";
+}
+.add-btn:hover {
+  transform: none;
+}
+.add-btn:active {
+  transform: scale(0.95);
+}
+.add-btn.in-cart {
+  background: var(--ink);
+}
+.add-btn__qty {
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  background: var(--orange);
+  color: var(--ink);
+  font-size: 12px;
+}
+.add-btn:focus-visible,
+.filter:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* Líneas del pedido con − cantidad + */
+.cart-line {
+  grid-template-columns: 1fr auto auto;
+  padding: 12px 0;
+}
+.cart-line strong {
+  font-size: 14px;
+}
+.cart-line small {
+  display: block;
+  font-size: 12px;
+}
+.line-qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 800;
+}
+.line-qty span {
+  min-width: 16px;
+  text-align: center;
+}
+.remove-line,
+.add-line {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: #f6eee5;
+  color: var(--brown-dark);
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.add-line {
+  background: var(--orange);
+  color: #fff;
+}
+.order-total,
+.toast {
+  font-size: 14px;
+}
+
+/* Menú en celular: tarjetas horizontales, la carta cabe en mucho menos scroll */
+@media (max-width: 680px) {
+  .menu-grid {
+    gap: 12px;
+  }
+  .food-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    border-radius: 16px;
+  }
+  .food-img {
+    height: auto;
+    min-height: 100%;
+  }
+  .food-img .food-photo {
+    object-position: left center;
+  }
+  .food-body {
+    padding: 14px 14px 14px 16px;
+  }
+  .food-body h3 {
+    font-size: 19px;
+    margin: 4px 0;
+  }
+  .food-body p {
+    font-size: 13px;
+  }
+  .food-bottom {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  .food-bottom strong {
+    font-size: 18px;
+  }
+  .add-btn {
+    height: 36px;
+    padding: 0 12px;
+  }
+  .filter-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .filter {
+    flex: none;
+  }
+}
+
+/* Entrada del hero: un solo momento al cargar la página */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > * {
+    animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .hero-copy > :nth-child(2) {
+    animation-delay: 0.08s;
+  }
+  .hero-copy > :nth-child(3) {
+    animation-delay: 0.16s;
+  }
+  .hero-copy > :nth-child(4) {
+    animation-delay: 0.24s;
+  }
+  .hero-copy > :nth-child(5) {
+    animation-delay: 0.32s;
+  }
+  .hero-art .chicken-card {
+    animation: hero-drop 0.9s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .hero-art .burst,
+  .hero-art .hero-stamp {
+    animation: hero-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  .hero-art .burst-one {
+    animation-delay: 0.7s;
+  }
+  .hero-art .burst-two {
+    animation-delay: 0.8s;
+  }
+  .hero-art .hero-stamp {
+    animation-delay: 0.9s;
+  }
+}
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+@keyframes hero-drop {
+  from {
+    opacity: 0;
+    translate: 0 -40px;
+    rotate: 6deg;
+  }
+}
+@keyframes hero-pop {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+}
+.filter {
+  font-size: 14px;
+  padding: 10px 18px;
+}

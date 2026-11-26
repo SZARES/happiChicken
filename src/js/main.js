@@ -43,16 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const filters = document.querySelectorAll(".filter");
   const cards = document.querySelectorAll(".food-card");
 
-  filters.forEach((filter) => {
-    filter.addEventListener("click", () => {
-      filters.forEach((f) => f.classList.remove("active"));
-      filter.classList.add("active");
-      const selected = filter.dataset.filter ?? ALL_CATEGORIES;
-
-      cards.forEach((card) => {
-        card.classList.toggle("hidden", !matchesCategory(card.dataset.category, selected));
-      });
+  function applyFilter(selected) {
+    filters.forEach((f) => f.classList.toggle("active", f.dataset.filter === selected));
+    cards.forEach((card) => {
+      card.classList.toggle("hidden", !matchesCategory(card.dataset.category, selected));
     });
+  }
+
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => applyFilter(filter.dataset.filter ?? ALL_CATEGORIES));
+  });
+
+  // Enlaces que abren el menú ya filtrado (p. ej. "Ver combos" en la promo).
+  document.querySelectorAll("[data-filter-link]").forEach((link) => {
+    link.addEventListener("click", () => applyFilter(link.dataset.filterLink));
   });
 
   /* ---------- Toast (HAP-114) ---------- */
@@ -107,8 +111,28 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCart();
   }
 
+  // Cada botón "Agregar" del menú muestra cuántas unidades ya están en el pedido.
+  function renderMenuButtons() {
+    document.querySelectorAll(".add-btn").forEach((button) => {
+      const qty = cart.find((item) => item.name === button.dataset.name)?.qty ?? 0;
+      let badge = button.querySelector(".add-btn__qty");
+      button.classList.toggle("in-cart", qty > 0);
+      if (!qty) {
+        badge?.remove();
+        return;
+      }
+      if (!badge) {
+        badge = document.createElement("span");
+        badge.className = "add-btn__qty";
+        button.append(badge);
+      }
+      badge.textContent = String(qty);
+    });
+  }
+
   function renderCart() {
     renderCartFab();
+    renderMenuButtons();
     if (!cartContainer || !totalElement) return;
 
     if (!cart.length) {
@@ -129,7 +153,11 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="cart-line">
         <div><strong>${name}</strong><small>${item.qty} × S/ ${formatSoles(item.priceCents)}</small></div>
         <strong>S/ ${formatSoles(item.priceCents * item.qty)}</strong>
-        <button class="remove-line" type="button" data-name="${name}" aria-label="Quitar uno de ${name}">−</button>
+        <div class="line-qty">
+          <button class="remove-line" type="button" data-name="${name}" aria-label="Quitar uno de ${name}">−</button>
+          <span>${item.qty}</span>
+          <button class="add-line" type="button" data-name="${name}" aria-label="Agregar uno más de ${name}">+</button>
+        </div>
       </div>`;
       })
       .join("");
@@ -139,9 +167,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Delegación de eventos: un solo listener para todas las líneas del carrito.
   cartContainer?.addEventListener("click", (event) => {
-    const button = event.target.closest(".remove-line");
-    if (!button) return;
-    updateCart(decrementItem(cart, button.dataset.name));
+    const minus = event.target.closest(".remove-line");
+    const plus = event.target.closest(".add-line");
+    if (minus) updateCart(decrementItem(cart, minus.dataset.name));
+    if (plus) {
+      const item = cart.find((line) => line.name === plus.dataset.name);
+      if (item) updateCart(addItem(cart, { name: item.name, price: item.priceCents / 100 }));
+    }
   });
 
   document.querySelectorAll(".add-btn").forEach((button) => {
